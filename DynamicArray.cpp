@@ -31,10 +31,11 @@ int DynamicArray::pop() {
 }
 
 void DynamicArray::extend() {
-	//new int = newLength;
-	//int newLength = storage_length++;
-	//for (int i = 0; i < storage_length; i++) {
-
-	//}
-
+	int newLength = storage_length+1;
+	int *newStorage = new int[newLength];
+	for (int i = 0; i < storage_length; i++) {
+		newStorage[i] = storage[i];
+	}
+	storage_length++;
+	storage = newStorage;
 }
