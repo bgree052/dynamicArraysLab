@@ -25,6 +25,7 @@ void DynamicArray::push(int o) {
 	}
 	storage[nitems] = o;
 	nitems++;
+	counter.add(1);
 }
 
 int DynamicArray::pop() {
@@ -33,12 +34,19 @@ int DynamicArray::pop() {
 }
 
 void DynamicArray::extend() {
-	std::cout << "extend" << std::endl;
-	int newLength = storage_length + 1;
+	//std::cout << "extend" << std::endl;
+	int newLength = storage_length + 5;
 	int *newStorage = new int[newLength];
 	for (int i = 0; i < storage_length; i++) {
 		newStorage[i] = storage[i];
+		counter.add(1);
 	}
-	storage_length++;
+	storage_length = newLength;
+	delete[] storage;
 	storage = newStorage;
+}
+
+void DynamicArray::print() {
+	std::cout << "Array Length: " << storage_length << '\n';
+	std::cout << "Unused space: " << storage_length - nitems << '\n';
 }

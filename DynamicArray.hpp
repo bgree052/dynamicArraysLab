@@ -15,6 +15,7 @@ public:
   void store(int, size_t);
   void push(int);
   int pop();
+  void print();
 private:
   void extend();
   int *storage;
